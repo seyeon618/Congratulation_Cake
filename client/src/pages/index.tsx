@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import NewButton from "@/component/NewButton";
 
 export default function Home() {
   return (
@@ -11,9 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>This is Home Page</main>
-      <li>
-        <Link href="/create">케이크 생성</Link>
-      </li>
+      <Link href="/create">
+        <NewButton text="케이크 생성" />
+      </Link>
     </>
   );
 }
