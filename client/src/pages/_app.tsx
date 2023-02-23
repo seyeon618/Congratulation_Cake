@@ -4,6 +4,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "styles/theme";
 import createEmotionCache from "util/creationEmotionCache";
 import Head from "next/head";
+import MainBlock from "@/component/MainBlock";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -22,7 +23,9 @@ export default function App({ Component, emotionCache = clientSideEmotionCache, 
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <MainBlock>
+          <Component {...pageProps} />
+        </MainBlock>
       </ThemeProvider>
     </CacheProvider>
   );

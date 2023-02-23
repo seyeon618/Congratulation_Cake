@@ -5,7 +5,7 @@ import { deepPurple, amber } from "@mui/material/colors";
 let theme = createTheme({
   palette: {
     primary: {
-      main: "#d55e58",
+      main: "#9333EA",
     },
   },
 });
