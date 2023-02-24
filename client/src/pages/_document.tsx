@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
           {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="emotion-insertion-point" content="" />
-          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
           {(this.props as any).emotionStyleTags}
         </Head>
         <body>
