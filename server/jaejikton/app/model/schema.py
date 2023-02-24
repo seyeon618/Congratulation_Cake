@@ -20,12 +20,15 @@ class Cake(Base):
     updated_time: datetime = Column(DateTime(timezone=True), server_default=text('NOW()'), onupdate=text('NOW()'))
 
     cake_design = relationship("CakeDesign", back_populates="cake")
+    messages = relationship("Message", back_populates="cake")
 
 @dataclass
 class CakeDesign(Base):
     __tablename__ = "cake_design"
     id: int = Column(Integer, Identity(start=1, cycle=True), primary_key=True)
     image_url: str = Column(String)
+
+    cake = relationship("Cake", back_populates="cake_design")
 
 @dataclass
 class Message(Base):
@@ -37,5 +40,4 @@ class Message(Base):
     created_at: date = Column(Date)
 
     cake = relationship("Cake", back_populates="messages")
-
 

@@ -12,13 +12,19 @@ class CRUDMessage:
         self.db = db
 
     def get_messages(self, request_params: request.MessageListParam) -> list[response.MessageResponse]:
-        return self.db.query(Message).filter(Message.cake_id == request_params.cake_id).all()
+        messages = self.db.query(Message).filter(Message.cake_id == request_params.cake_id).all()
+        return [response.MessageResponse(id=message.id, image_url=message.image_url, message=message.message) for message in messages]
 
     def get_message(self, request_params: request.EachMessageParam) -> response.MessageResponse:
         try:
-            return self.db.query(Message).filter(Message.id == request_params.message_id).one()
+            message = self.db.query(Message).filter(Message.id == request_params.message_id).one()
+            return response.MessageResponse(id=message.id, image_url=message.image_url, message=message.message)
         except NoResultFound:
             raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="Message not exist")
 
     def create_message(self, request_body: request.CreateMessageBody) -> response.MessageResponse:
-        return None
+        new_message = Message(**request_body.dict())
+        self.db.add(new_message)
+        self.db.commit()
+        self.db.refresh(new_message)
+        return response.MessageResponse(id=new_message.id, image_url=new_message.image_url, message=new_message.message)
