@@ -5,6 +5,7 @@ import theme from "styles/theme";
 import createEmotionCache from "util/creationEmotionCache";
 import Head from "next/head";
 import MainBlock from "@/component/MainBlock";
+import FontGroup from "@/component/FontGroup";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -21,6 +22,7 @@ export default function App({ Component, emotionCache = clientSideEmotionCache, 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <FontGroup />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <MainBlock>
