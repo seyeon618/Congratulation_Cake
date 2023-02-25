@@ -10,7 +10,7 @@ enum CelebratePageState {
   complete = 2,
 }
 
-function Edit() {
+function Celebrate() {
   const router = useRouter();
   const { id } = router.query;
 
@@ -39,4 +39,4 @@ function Edit() {
   return <>{pages}</>;
 }
 
-export default Edit;
+export default Celebrate;
