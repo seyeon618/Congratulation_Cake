@@ -34,7 +34,6 @@ function CakePage() {
     setPageState(pageState + 1);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onNextPage = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();

@@ -37,7 +37,6 @@ function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId
 
   return (
     <CommonBackground onClickAction={preAction}>
-      <div onClick={handleNextAction}>here</div>
       <Card>
         <Label text={"Pick a \n cake design"} />
         <CakeSelector setSelectedCake={setSelectedCake} selectedCake={selectedCake} />

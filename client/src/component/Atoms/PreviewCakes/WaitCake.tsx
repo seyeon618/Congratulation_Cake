@@ -1,7 +1,7 @@
 import CommonBackground from "@/component/Common/CommonBackground";
 import Card from "@/component/Atoms/Card";
 import Button from "@/component/Atoms/Button";
-import { ButtonWrap, ImageWrap, Label, LabelWrap } from "./styles";
+import { ButtonWrap, CakeImageWrap, Label, LabelWrap } from "./styles";
 
 import Image from "next/image";
 import Cake1 from "@/asset/images/Cake_1.png";
@@ -21,9 +21,9 @@ function WaitCake({ preAction, nextAction, id }: Props) {
   console.log(id);
   return (
     <CommonBackground onClickAction={preAction}>
-      <ImageWrap>
-        <Image src={cakeImages[id - 1]} alt={`cake-image-${id}`} width={192} height={192} />
-      </ImageWrap>
+      <CakeImageWrap>
+        <Image src={cakeImages[id - 1]} alt={`cake-image-${id}`} width={251} height={251} />
+      </CakeImageWrap>
       <Card>
         <LabelWrap>
           <Label isGradient={true}>{"케이크는 D-DAY에"}</Label>

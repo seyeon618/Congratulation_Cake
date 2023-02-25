@@ -1,11 +1,15 @@
 import Button from "@/component/Atoms/Button";
 import CommonBackground from "@/component/Common/CommonBackground";
 import Card from "@/component/Atoms/Card";
-import { StyledInput } from "./styles";
+import { UploadButtonWrap, StyledInput, StyledLabel, UploadImageWrap, Question } from "./styles";
 import { useRef } from "react";
 import { useState } from "react";
 import { baseUrl } from "@/constant/api";
 import axios from "axios";
+
+import Image from "next/image";
+import UploadImg from "@/asset/images/UploadImage.png";
+import QuestionImg from "@/asset/images/Question.png";
 
 interface Props {
   preAction?: any;
@@ -14,55 +18,67 @@ interface Props {
 
 function ImageForm({ preAction, nextAction }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [selectedImage, setSelectedImage] = useState<any>();
 
   const handleFileUpload = (e: any) => {
     const url = `${baseUrl}/message/remove-background/`;
-    const reader = new FileReader();
     const uploadedFile = e.target.files[0];
     const maxFileSize: number = 2 * 1024 * 1024;
     const uploadedFileSize = uploadedFile?.size;
 
-    //Validate uploaded file size (Max 5MB)
+    // Validate uploaded file size (Max 5MB)
     if (maxFileSize < uploadedFileSize) {
       return;
     }
 
-    // Execute file upload process
-    reader.onload = () => {
-      const formData = new FormData();
-      formData.append("file", uploadedFile);
+    const formData = new FormData();
+    formData.append("file", uploadedFile);
 
-      axios
-        .post(url, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          console.log(res);
-        });
-    };
-
-    // setSelectedFile(uploadedFile);
+    axios
+      .post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        responseType: "blob",
+      })
+      .then((res) => {
+        const blobURL = URL.createObjectURL(res.data);
+        setSelectedImage(blobURL);
+      })
+      .catch((err) => {
+        console.error("err: ", err);
+      });
   };
   // res 성공 Action
   // nextAction();
 
+  const UploadImage = (() => {
+    return selectedImage == null ? <Image src={UploadImg} alt={"upload-image"} width={196} height={196} /> : <img src={selectedImage} alt={"image"} />;
+  })();
+
   return (
     <CommonBackground onClickAction={preAction}>
       <Card>
-        <div>Image 업로드 하세요</div>
-
+        <UploadImageWrap>
+          <>{UploadImage}</>
+        </UploadImageWrap>
+        <Question>
+          <Image src={QuestionImg} alt={"question"} />
+          <StyledLabel>{"케이크에 꽃을 초는 \n 너가 올려주는 사진으로 만들어질거야"}</StyledLabel>
+        </Question>
         <StyledInput ref={inputRef} type="file" accept="image/*" onChange={handleFileUpload} />
-        <Button
-          label="Image Upload"
-          Action={() => {
-            if (inputRef.current) {
-              inputRef.current.click();
-            }
-          }}
-        />
+        <UploadButtonWrap>
+          <Button
+            label="Image Upload"
+            Action={() => {
+              if (inputRef.current) {
+                inputRef.current.click();
+                console.log("upload image");
+              }
+            }}
+          />
+          <Button label="Next" Action={nextAction} />
+        </UploadButtonWrap>
       </Card>
     </CommonBackground>
   );

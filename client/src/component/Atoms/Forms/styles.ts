@@ -1,4 +1,4 @@
-import { FormLabel } from "@mui/material";
+import { FormLabel, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const Label = styled(FormLabel)`
@@ -22,6 +22,13 @@ export const ButtonWrap = styled("div")`
   width: 50%;
   margin: auto;
   margin-bottom: 10%;
+`;
+
+export const UploadButtonWrap = styled("div")`
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10%;
+  margin-top: 20%;
 `;
 
 export const Complete = styled("div")`
@@ -51,6 +58,13 @@ export const ImageWrap = styled("div")`
   position: absolute;
 `;
 
+export const UploadImageWrap = styled("div")`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 10%;
+`;
+
 export const GuideMessage = styled("div")`
   position: relative;
   display: flex;
@@ -73,4 +87,28 @@ export const Link = styled("div")`
 
 export const StyledInput = styled("input")`
   display: none;
+`;
+
+export const StyledLabel = styled("div")`
+  position: absolute;
+  margin-top: 15%;
+  font-size: 0.5rem;
+  color: #8511ee;
+`;
+
+export const Question = styled("div")`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+`;
+
+export const MessageBox = styled(TextareaAutosize)`
+  width: 100%;
+  display: flex;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  border-color: purple;
+  border-radius: 5px;
 `;

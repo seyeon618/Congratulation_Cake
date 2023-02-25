@@ -31,6 +31,10 @@ function Celebrate() {
     router.push(`/cake/${cakeId}`);
   };
 
+  const goNextPageEnter = (e: any) => {
+    if (e.key === "Enter") setPageState(pageState + 1);
+  };
+
   const goNextPage = () => {
     setPageState(pageState + 1);
   };
@@ -60,7 +64,7 @@ function Celebrate() {
       default:
         return (
           <NameForm preBtnAction={redirectCelebrate}>
-            <InputBox onKeyPress={goNextPage} text="From." guideText="너의 이름이나 닉네임을 적어줘"></InputBox>
+            <InputBox onKeyPress={goNextPageEnter} text="From." guideText="너의 이름이나 닉네임을 적어줘"></InputBox>
           </NameForm>
         );
       case CelebratePageState.uploadImage:
@@ -68,7 +72,7 @@ function Celebrate() {
       case CelebratePageState.uploadMessage:
         return <MessageForm preAction={goCakePage} nextAction={goNextPage} />;
       case CelebratePageState.complete:
-        return <CelebreateCompleteCake />;
+        return <CelebreateCompleteCake cakeId={cakeId} />;
     }
   })();
 
