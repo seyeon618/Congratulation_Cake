@@ -1,20 +1,21 @@
+import Button from "@/component/Atoms/Button";
 import CommonBackground from "@/component/Common/CommonBackground";
 import Card from "@/component/Atoms/Card";
 
 interface Props {
   preAction?: any;
+  nextAction?: any;
 }
 
-function CompleteCake({ preAction }: Props) {
+function MessageForm({ preAction, nextAction }: Props) {
   return (
     <CommonBackground onClickAction={preAction}>
       <Card>
-        <div>Complete!</div>
-        <div>케이크 이미지</div>
-        <div>Cake Link</div>
+        <div>Message를 입력하세요</div>
+        <Button label="Done" Action={nextAction} />
       </Card>
     </CommonBackground>
   );
 }
 
-export default CompleteCake;
+export default MessageForm;

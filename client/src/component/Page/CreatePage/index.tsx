@@ -3,10 +3,10 @@ import { Label } from "./styles";
 import InputBox from "@/component/Atoms/InputBox";
 import Calender from "@/component/Atoms/Calendar";
 
-import NameForm from "@/component/Atoms/CreateForms/NameForm";
-import DateForm from "@/component/Atoms/CreateForms/DateForm";
-import PasswordForm from "@/component/Atoms/CreateForms/PasswordForm";
-import CakeForm from "@/component/Atoms/CreateForms/CakeForm";
+import NameForm from "@/component/Atoms/Forms/NameForm";
+import DateForm from "@/component/Atoms/Forms/DateForm";
+import PasswordForm from "@/component/Atoms/Forms/PasswordForm";
+import CakeForm from "@/component/Atoms/Forms/CakeForm";
 import { useRouter } from "next/router";
 
 function CakePage() {

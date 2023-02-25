@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import PasswordForm from "@/component/Atoms/CreateForms/PasswordForm";
-import CakeForm from "@/component/Atoms/CreateForms/CakeForm";
+import PasswordForm from "@/component/Atoms/Forms/PasswordForm";
+import CakeForm from "@/component/Atoms/Forms/CakeForm";
 import WaitCake from "@/component/Atoms/PreviewCakes/WaitCake";
-import CompleteCake from "@/component/Atoms/PreviewCakes/CompleteCake";
+import CompleteCake from "@/component/Atoms/PreviewCakes/EditCompleteCake";
 
 enum EditPageState {
   password = 0,
