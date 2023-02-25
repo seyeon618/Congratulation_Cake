@@ -5,7 +5,7 @@ import Button from "@/component/Atoms/Button";
 import { Container, Inner, ButtonsWrapper } from "./styles";
 
 interface Props {
-  cakeId: string;
+  cakeId: number;
 }
 
 function CelebratePage({ cakeId }: Props) {

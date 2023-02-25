@@ -4,6 +4,8 @@ import PasswordForm from "@/component/Atoms/Forms/PasswordForm";
 import CakeForm from "@/component/Atoms/Forms/CakeForm";
 import WaitCake from "@/component/Atoms/PreviewCakes/WaitCake";
 import CompleteCake from "@/component/Atoms/PreviewCakes/EditCompleteCake";
+import axios from "axios";
+import { baseUrl } from "@/constant/api";
 
 enum EditPageState {
   password = 0,
@@ -15,14 +17,21 @@ enum EditPageState {
 function Edit() {
   const router = useRouter();
   const { id } = router.query;
+  const cakeId = Number(id);
 
   const [pageState, setPageState] = useState(EditPageState.password);
 
   const passwordConfirm = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      // TODO: 서버에 비밀번호 확인 요청
-      setPageState(pageState + 1);
+
+      //FIXME: password 추가
+      const url = `${baseUrl}/cake/${cakeId}/admin?password=${"aaaa1111"}`;
+
+      axios.get(url).then((res) => {
+        console.log(res);
+        setPageState(pageState + 1);
+      });
     }
   };
 
@@ -51,7 +60,7 @@ function Edit() {
       case EditPageState.waitCake:
         return <WaitCake preAction={goCakePage} nextAction={goCakeDesign} />;
       case EditPageState.cakeDesign:
-        return <CakeForm preAction={onPrevPage} nextAction={goCompleteCake} />;
+        return <CakeForm preAction={onPrevPage} nextAction={goCompleteCake} cakeId={cakeId} />;
       case EditPageState.completeCake:
         return <CompleteCake preAction={goCakePage} />;
     }

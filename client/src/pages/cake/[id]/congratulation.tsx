@@ -5,7 +5,7 @@ function Congratulation() {
   const router = useRouter();
   const { id } = router.query;
 
-  return <CakePage />;
+  return <CakePage id={Number(id)} />;
 }
 
 export default Congratulation;

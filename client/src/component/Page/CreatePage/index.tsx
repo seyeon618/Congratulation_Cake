@@ -9,7 +9,10 @@ import PasswordForm from "@/component/Atoms/Forms/PasswordForm";
 import CakeForm from "@/component/Atoms/Forms/CakeForm";
 import CompleteCake from "@/component/Atoms/Forms/CompleteForm";
 
+import { baseUrl } from "@/constant/api";
+
 import { useRouter } from "next/router";
+import axios from "axios";
 
 enum PageState {
   nickname = 0,
@@ -23,6 +26,9 @@ function CakePage() {
   const router = useRouter();
 
   const [pageState, setPageState] = useState(PageState.nickname);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [selectedCake, setSelectedCake] = useState(0);
 
   const onNextPageToSelection = () => {
@@ -44,6 +50,26 @@ function CakePage() {
 
   const redirectHome = () => {
     router.push("/");
+  };
+
+  const postCreateCake = () => {
+    const url = `${baseUrl}/cake`;
+    // const requestData = {
+    //   receiver: name,
+    //   password: password,
+    //   date_of_birth: birthday,
+    //   cake_design_id: selectedCake,
+    // };
+    const requestData = {
+      receiver: "name",
+      password: "password",
+      date_of_birth: "2023-02-02",
+      cake_design_id: 1,
+    };
+
+    axios.post(url, requestData).then((res) => {
+      console.log(res);
+    });
   };
 
   const forms = (() => {
