@@ -11,7 +11,9 @@ interface getCakeResponse {
 }
 
 function getCake(id: string) {
-  const { data, error } = useSWR<getCakeResponse, AxiosError>(id ? `${baseUrl}?cake_id=${id}` : null);
+  const { data, error } = useSWR<getCakeResponse, AxiosError>(id ? `${baseUrl}/cake?cake_id=${2}` : null);
+
+  console.log(data);
 
   return {
     data: data,
