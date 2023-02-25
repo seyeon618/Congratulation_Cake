@@ -1,20 +1,13 @@
 import CommonBackground from "@/component/Common/CommonBackground";
 import Card from "@/component/Atoms/Card";
+import CompleteCake from "@/component/Atoms/Forms/CompleteForm";
 
 interface Props {
-  preAction?: any;
+  selectedCake: number;
 }
 
-function EditCompleteCake({ preAction }: Props) {
-  return (
-    <CommonBackground onClickAction={preAction}>
-      <Card>
-        <div>Complete!</div>
-        <div>케이크 이미지</div>
-        <div>Cake Link</div>
-      </Card>
-    </CommonBackground>
-  );
+function EditCompleteCake({ selectedCake }: Props) {
+  return <CompleteCake selectedCake={selectedCake} />;
 }
 
 export default EditCompleteCake;

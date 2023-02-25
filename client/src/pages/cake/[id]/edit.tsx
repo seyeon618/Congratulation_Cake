@@ -20,6 +20,7 @@ function Edit() {
   const cakeId = Number(id);
 
   const [pageState, setPageState] = useState(EditPageState.password);
+  const [selectedCake, setSelectedCake] = useState(Number(id));
 
   const passwordConfirm = (e: any) => {
     if (e.key === "Enter") {
@@ -56,13 +57,13 @@ function Edit() {
     switch (pageState) {
       case EditPageState.password:
       default:
-        return <PasswordForm preAction={goCakePage} nextAction={passwordConfirm} text="Type your Password" />;
+        return <PasswordForm preAction={goCakePage} nextAction={passwordConfirm} text="Type your Password" showGuideMessage={false} />;
       case EditPageState.waitCake:
-        return <WaitCake preAction={goCakePage} nextAction={goCakeDesign} />;
+        return <WaitCake preAction={goCakePage} nextAction={goCakeDesign} id={selectedCake} />;
       case EditPageState.cakeDesign:
-        return <CakeForm preAction={onPrevPage} nextAction={goCompleteCake} cakeId={cakeId} />;
+        return <CakeForm preAction={onPrevPage} nextAction={goCompleteCake} selectedCake={selectedCake} setSelectedCake={setSelectedCake} />;
       case EditPageState.completeCake:
-        return <CompleteCake preAction={goCakePage} />;
+        return <CompleteCake selectedCake={selectedCake} />;
     }
   })();
 

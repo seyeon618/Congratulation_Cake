@@ -29,17 +29,9 @@ export const Inner = styled("div")`
 export const Card = styled("div")`
   background-color: white;
   position: absolute;
-  top: 20%;
+  top: 25%;
   left: 15%;
   width: 70%;
   height: 60%;
   border-radius: 55px;
-`;
-
-export const Label = styled(FormLabel)`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  top: 6%;
-  color: #9333ea;
 `;

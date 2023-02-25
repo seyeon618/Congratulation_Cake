@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Label } from "./styles";
 import InputBox from "@/component/Atoms/InputBox";
 import Calender from "@/component/Atoms/Calendar";
 
@@ -78,19 +77,17 @@ function CakePage() {
       default:
         return (
           <NameForm preBtnAction={redirectHome}>
-            <Label>{"your name or nickname?"}</Label>
-            <InputBox onKeyPress={onNextPage}></InputBox>
+            <InputBox onKeyPress={onNextPage} text="To." guideText="케이크 주인의 이름을 적어줘"></InputBox>
           </NameForm>
         );
       case PageState.birthday:
         return (
           <DateForm preBtnAction={onPrevPage}>
-            <Label>{"which day do you want to celebrate?"}</Label>
             <Calender onClose={onNextPageToSelection}></Calender>
           </DateForm>
         );
       case PageState.password:
-        return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text="Set a Password!" />;
+        return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text={"Set a \n Password!"} showGuideMessage={true} />;
       case PageState.cake:
         return <CakeForm preAction={onPrevPage} nextAction={onNextPageToSelection} setSelectedCake={setSelectedCake} selectedCake={selectedCake}></CakeForm>;
       case PageState.success:

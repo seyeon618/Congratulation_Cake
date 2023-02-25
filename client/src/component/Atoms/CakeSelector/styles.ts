@@ -4,7 +4,8 @@ export const CakeWrap = styled("div")`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 30%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 `;
 
 export const CheckWrap = styled("div")`

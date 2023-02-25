@@ -1,11 +1,12 @@
 import { styled } from "@mui/material/styles";
-import { FormLabel, TextField } from "@mui/material";
+import { FormLabel } from "@mui/material";
 
 export const Bang = styled("div")`
   position: relative;
-  display: flex;
   justify-content: center;
-  margin-top: 30%;
+  margin-top: 20%;
+
+  display: ${(props: { isShow: boolean }) => (props.isShow ? "flex" : "none")};
 `;
 
 export const Label = styled(FormLabel)`
@@ -16,18 +17,47 @@ export const Label = styled(FormLabel)`
 `;
 
 export const InputWrap = styled("div")`
-  margin-top: 20%;
+  margin-top: 30%;
   display: flex;
   position: relative;
   justify-content: center;
 `;
 
-export const Input = styled(TextField)`
-  .mui-style-1rwuzie-MuiInputBase-root-MuiInput-root:after {
-    border-bottom: 2px solid purple;
-  }
+export const BoxWrap = styled("div")`
+  width: 100%;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 30%;
+  padding: 0px 10px 0px 10px;
+  gap: 10px;
+`;
 
-  .mui-style-7ati4b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-    color: purple;
+export const Box = styled("div")`
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid purple;
+  border-radius: 10px;
+`;
+
+export const StyledInput = styled("input")`
+  border: 0px;
+  background: none;
+  color: transparent;
+
+  :focus {
+    outline: none;
   }
+`;
+
+export const TextWrap = styled("div")`
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  color: purple;
+  font-size: xxx-large;
+
+  display: ${(props: { isVisible: boolean }) => (props.isVisible ? "flex" : "none")};
 `;

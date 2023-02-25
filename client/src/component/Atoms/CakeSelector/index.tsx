@@ -38,6 +38,7 @@ function CakeSelector({ selectedCake, setSelectedCake }: Props) {
       title: "Cake4",
     },
   ];
+  console.log(selectedCake);
 
   return (
     <div>

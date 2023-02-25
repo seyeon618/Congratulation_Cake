@@ -2,6 +2,8 @@ import CommonBackground from "@/component/Common/CommonBackground";
 import Card from "@/component/Atoms/Card";
 import CakeSelector from "@/component/Atoms/CakeSelector";
 import Button from "@/component/Atoms/Button";
+import Label from "@/component/Atoms/Label";
+import { ButtonWrap } from "./styles";
 import axios from "axios";
 import { baseUrl } from "@/constant/api";
 
@@ -37,9 +39,11 @@ function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId
     <CommonBackground onClickAction={preAction}>
       <div onClick={handleNextAction}>here</div>
       <Card>
-        <div>Pick a cake design</div>
+        <Label text={"Pick a \n cake design"} />
         <CakeSelector setSelectedCake={setSelectedCake} selectedCake={selectedCake} />
-        <Button label="Next" Action={handleNextAction} />
+        <ButtonWrap>
+          <Button label="Next" Action={nextAction} disable={selectedCake == 0} />
+        </ButtonWrap>
       </Card>
     </CommonBackground>
   );
