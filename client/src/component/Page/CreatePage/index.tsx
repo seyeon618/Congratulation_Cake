@@ -7,18 +7,23 @@ import NameForm from "@/component/Atoms/Forms/NameForm";
 import DateForm from "@/component/Atoms/Forms/DateForm";
 import PasswordForm from "@/component/Atoms/Forms/PasswordForm";
 import CakeForm from "@/component/Atoms/Forms/CakeForm";
+import CompleteCake from "@/component/Atoms/Forms/CompleteForm";
+
 import { useRouter } from "next/router";
+
+enum PageState {
+  nickname = 0,
+  birthday = 1,
+  password = 2,
+  cake = 3,
+  success = 4,
+}
 
 function CakePage() {
   const router = useRouter();
-  enum PageState {
-    nickname = 0,
-    birthday = 1,
-    password = 2,
-    cake = 3,
-    success = 4,
-  }
+
   const [pageState, setPageState] = useState(PageState.nickname);
+  const [selectedCake, setSelectedCake] = useState(0);
 
   const onNextPageToSelection = () => {
     setPageState(pageState + 1);
@@ -32,7 +37,6 @@ function CakePage() {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onPrevPage = (e: any) => {
     e.preventDefault();
     setPageState(pageState - 1);
@@ -62,7 +66,9 @@ function CakePage() {
       case PageState.password:
         return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text="Set a Password!" />;
       case PageState.cake:
-        return <CakeForm preAction={onPrevPage}></CakeForm>;
+        return <CakeForm preAction={onPrevPage} nextAction={onNextPageToSelection} setSelectedCake={setSelectedCake} selectedCake={selectedCake}></CakeForm>;
+      case PageState.success:
+        return <CompleteCake selectedCake={selectedCake} />;
     }
   })();
 

@@ -1,16 +1,21 @@
 import { CakeWrap, CheckWrap } from "./styles";
-import Cake1 from "@/asset/images/Cake_1.png";
-import Cake2 from "@/asset/images/Cake_2.png";
-import Cake3 from "@/asset/images/Cake_3.png";
-import Cake4 from "@/asset/images/Cake_4.png";
 import Check from "@/asset/images/Check.png";
 import Image from "next/image";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { useState } from "react";
 
-function CakeSelector() {
-  const [curCake, setCurCake] = useState(0);
+import Cake1 from "@/asset/images/Cake_1.png";
+import Cake2 from "@/asset/images/Cake_2.png";
+import Cake3 from "@/asset/images/Cake_3.png";
+import Cake4 from "@/asset/images/Cake_4.png";
+
+interface Props {
+  setSelectedCake?: any;
+  selectedCake?: number;
+}
+
+function CakeSelector({ selectedCake, setSelectedCake }: Props) {
   const itemData = [
     {
       img: Cake1,
@@ -34,30 +39,20 @@ function CakeSelector() {
     },
   ];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onCakeSelection = (num: number, e: any) => {
-    e.preventDefault();
-    setCurCake(num);
-  };
-
   return (
     <div>
       <CakeWrap>
         <ImageList cols={2}>
           {itemData.map((item) => (
             <ImageListItem key={item.title}>
-              <div>
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  width={120}
-                  height={120}
-                  onClick={(e) => {
-                    onCakeSelection(item.number, e);
-                  }}
-                />
+              <div
+                onClick={() => {
+                  setSelectedCake(item.number);
+                }}
+              >
+                <Image src={item.img} alt={item.title} width={120} height={120} />
               </div>
-              {item.number === curCake ? (
+              {item.number === selectedCake ? (
                 <CheckWrap>
                   <Image src={Check} alt="Check" />
                 </CheckWrap>
