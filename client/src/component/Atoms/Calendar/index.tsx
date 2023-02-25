@@ -10,13 +10,15 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 interface Props {
   onClose: () => void;
+  setState: any;
 }
 
-function Calender({ onClose }: Props) {
+function Calender({ onClose, setState }: Props) {
   const [date, setDate] = useState<Dayjs | null>(dayjs());
 
   const handleChange = (newDate: Dayjs | null) => {
     setDate(newDate);
+    setState(newDate?.format("YYYY-MM-DD"));
   };
 
   return (

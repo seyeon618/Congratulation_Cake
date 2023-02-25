@@ -62,11 +62,7 @@ function Celebrate() {
     switch (pageState) {
       case CelebratePageState.addWriter:
       default:
-        return (
-          <NameForm preBtnAction={redirectCelebrate}>
-            <InputBox onKeyPress={goNextPageEnter} text="From." guideText="너의 이름이나 닉네임을 적어줘"></InputBox>
-          </NameForm>
-        );
+        return <NameForm preBtnAction={redirectCelebrate} nextAction={goNextPageEnter} text="From." guideText="너의 이름이나 닉네임을 적어줘" />;
       case CelebratePageState.uploadImage:
         return <ImageForm preAction={goCakePage} nextAction={goNextPage} />;
       case CelebratePageState.uploadMessage:

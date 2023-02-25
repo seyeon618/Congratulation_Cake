@@ -29,14 +29,24 @@ function CakePage() {
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
   const [selectedCake, setSelectedCake] = useState(0);
+  const [cakeLink, setCakeLink] = useState("");
 
   const onNextPageToSelection = () => {
     setPageState(pageState + 1);
+    if (pageState === PageState.cake) {
+      postCreateCake();
+    }
   };
 
   const onNextPage = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      if (pageState === PageState.nickname) {
+        setName(e.target.value);
+      } else if (pageState === PageState.password) {
+        setPassword(e.target.value);
+      }
+
       setPageState(pageState + 1);
     }
   };
@@ -52,21 +62,21 @@ function CakePage() {
 
   const postCreateCake = () => {
     const url = `${baseUrl}/cake`;
-    // const requestData = {
-    //   receiver: name,
-    //   password: password,
-    //   date_of_birth: birthday,
-    //   cake_design_id: selectedCake,
-    // };
     const requestData = {
-      receiver: "name",
-      password: "password",
-      date_of_birth: "2023-02-02",
-      cake_design_id: 1,
+      receiver: name,
+      password: password,
+      date_of_birth: birthday,
+      cake_design_id: selectedCake,
     };
+    // const requestData = {
+    //   receiver: "name",
+    //   password: "password",
+    //   date_of_birth: "2023-02-02",
+    //   cake_design_id: 1,
+    // };
 
     axios.post(url, requestData).then((res) => {
-      console.log(res);
+      setCakeLink(res.data.link);
     });
   };
 
@@ -74,15 +84,11 @@ function CakePage() {
     switch (pageState) {
       case PageState.nickname:
       default:
-        return (
-          <NameForm preBtnAction={redirectHome}>
-            <InputBox onKeyPress={onNextPage} text="To." guideText="케이크 주인의 이름을 적어줘"></InputBox>
-          </NameForm>
-        );
+        return <NameForm preBtnAction={redirectHome} nextAction={onNextPage} text="To." guideText="케이크 주인의 이름을 적어줘" />;
       case PageState.birthday:
         return (
           <DateForm preBtnAction={onPrevPage}>
-            <Calender onClose={onNextPageToSelection}></Calender>
+            <Calender onClose={onNextPageToSelection} setState={setBirthday}></Calender>
           </DateForm>
         );
       case PageState.password:
@@ -90,7 +96,7 @@ function CakePage() {
       case PageState.cake:
         return <CakeForm preAction={onPrevPage} nextAction={onNextPageToSelection} setSelectedCake={setSelectedCake} selectedCake={selectedCake}></CakeForm>;
       case PageState.success:
-        return <CompleteCake selectedCake={selectedCake} />;
+        return <CompleteCake selectedCake={selectedCake} cakeLink={cakeLink} />;
     }
   })();
 

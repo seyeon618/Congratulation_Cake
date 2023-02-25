@@ -7,7 +7,7 @@ interface Props {
 }
 
 function EditCompleteCake({ selectedCake }: Props) {
-  return <CompleteCake selectedCake={selectedCake} />;
+  return <CompleteCake selectedCake={selectedCake} cakeLink={"0"} />;
 }
 
 export default EditCompleteCake;

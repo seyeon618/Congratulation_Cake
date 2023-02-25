@@ -11,6 +11,7 @@ interface Props {
 
 function InputBox({ onKeyPress, text, guideText }: Props) {
   const handleKeyPress = () => onKeyPress;
+
   return (
     <div>
       <Label text={text} />

@@ -69,20 +69,28 @@ export const GuideMessage = styled("div")`
   position: relative;
   display: flex;
   justify-content: center;
-  top: 65%;
+  top: 70%;
   font-size: 0.5rem;
   color: #8511ee;
   white-space: pre-line;
   text-align: center;
 `;
 
-export const Link = styled("div")`
-  position: absolute;
-  top: 105%;
-  width: 30%;
+export const LinkText = styled("div")`
+  margin-top: 30px;
+  margin-bottom: 30px;
+  min-width: 300px;
+  max-width: 400px;
+  width: 50vw;
   text-align: center;
   background-color: rgba(217, 217, 217, 0.8);
   border-radius: 10px;
+
+  cursor: pointer;
+
+  :hover {
+    background-color: rgba(217, 217, 217, 1);
+  }
 `;
 
 export const StyledInput = styled("input")`
