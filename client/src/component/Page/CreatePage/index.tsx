@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Label } from "./styles";
-import InputBox from "@/component/InputBox";
-import InputPw from "@/component/InputPw";
-import Calender from "@/component/Calendar";
-import CakeSelector from "@/component/CakeSelector";
-import NameForm from "@/component/CreateForms/NameForm";
-import DateForm from "@/component/CreateForms/DateForm";
-import PasswordForm from "@/component/CreateForms/PasswordForm";
-import CakeForm from "@/component/CreateForms/CakeForm";
+import InputBox from "@/component/Atoms/InputBox";
+import Calender from "@/component/Atoms/Calendar";
+
+import NameForm from "@/component/Atoms/CreateForms/NameForm";
+import DateForm from "@/component/Atoms/CreateForms/DateForm";
+import PasswordForm from "@/component/Atoms/CreateForms/PasswordForm";
+import CakeForm from "@/component/Atoms/CreateForms/CakeForm";
 import { useRouter } from "next/router";
 
 function CakePage() {
@@ -61,19 +60,9 @@ function CakePage() {
           </DateForm>
         );
       case PageState.password:
-        return (
-          <PasswordForm preBtnAction={onPrevPage}>
-            <Label>{"Set a password!"}</Label>
-            <InputPw onKeyPress={onNextPage}></InputPw>
-          </PasswordForm>
-        );
+        return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text="Set a Password!" />;
       case PageState.cake:
-        return (
-          <CakeForm preBtnAction={onPrevPage}>
-            <Label>{"Pick a cake design"}</Label>
-            <CakeSelector />
-          </CakeForm>
-        );
+        return <CakeForm preAction={onPrevPage}></CakeForm>;
     }
   })();
 

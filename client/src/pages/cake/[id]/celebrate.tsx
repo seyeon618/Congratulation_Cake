@@ -1,4 +1,4 @@
-import CommonBackground from "@/component/CommonBackground";
+import CommonBackground from "@/component/Common/CommonBackground";
 import { useRouter } from "next/router";
 
 function Edit() {

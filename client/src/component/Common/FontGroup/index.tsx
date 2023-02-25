@@ -1,6 +1,6 @@
 import localFont from "@next/font/local";
 
-const SCDream1 = localFont({ src: "../../../public/fonts/SCDream1.otf" });
+const SCDream1 = localFont({ src: "../../../../public/fonts/SCDream1.otf" });
 
 function FontGroup() {
   return (

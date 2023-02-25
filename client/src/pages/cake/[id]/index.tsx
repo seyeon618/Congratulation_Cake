@@ -1,9 +1,9 @@
 import getCake from "@/apis/get/getCake";
-import CommonBackground from "@/component/CommonBackground";
+import CommonBackground from "@/component/Common/CommonBackground";
 
 import { useRouter } from "next/router";
 
-import CelebratePage from "@/component/CelebratePage";
+import CelebratePage from "@/component/Page/CelebratePage";
 
 function Cake() {
   const router = useRouter();

@@ -1,5 +1,5 @@
-import CommonBackground from "@/component/CommonBackground";
-import Card from "@/component/Card";
+import CommonBackground from "@/component/Common/CommonBackground";
+import Card from "@/component/Atoms/Card";
 
 interface Props {
   children: React.ReactNode;

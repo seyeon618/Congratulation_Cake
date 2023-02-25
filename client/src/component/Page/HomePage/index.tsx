@@ -2,8 +2,8 @@ import Image from "next/image";
 import { Background, BackgroundImageWrapper, Inner } from "./styles";
 import MainHeart from "@/asset/images/MainHeart.png";
 import Celebrate from "@/asset/images/Celebrate.png";
-import Button from "@/component/Button";
-import LinkText from "@/component/LinkText";
+import Button from "@/component/Atoms/Button";
+import LinkText from "@/component/Atoms/LinkText";
 
 function HomePage() {
   return (

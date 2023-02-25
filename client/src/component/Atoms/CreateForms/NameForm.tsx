@@ -1,12 +1,12 @@
-import CommonBackground from "@/component/CommonBackground";
-import Card from "@/component/Card";
+import CommonBackground from "@/component/Common/CommonBackground";
+import Card from "@/component/Atoms/Card";
 
 interface Props {
   children: React.ReactNode;
   preBtnAction: any;
 }
 
-function CakeForm({ children, preBtnAction }: Props) {
+function NameForm({ children, preBtnAction }: Props) {
   return (
     <CommonBackground onClickAction={preBtnAction}>
       <Card>{children}</Card>
@@ -14,4 +14,4 @@ function CakeForm({ children, preBtnAction }: Props) {
   );
 }
 
-export default CakeForm;
+export default NameForm;

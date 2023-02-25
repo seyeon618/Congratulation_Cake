@@ -1,7 +1,7 @@
 import Image from "next/image";
 import celebrateText from "@/asset/images/celebrate_text.png";
-import Card from "@/component/Card";
-import Button from "@/component/Button";
+import Card from "@/component/Atoms/Card";
+import Button from "@/component/Atoms/Button";
 import { Container, Inner, ButtonsWrapper } from "./styles";
 
 interface Props {

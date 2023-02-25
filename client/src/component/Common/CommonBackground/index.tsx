@@ -2,7 +2,7 @@ import Image from "next/image";
 import { BackgroundImageWrapper, FillBackground, Inner } from "./styles";
 
 import MainHeart from "@/asset/images/MainHeart.png";
-import PrevButton from "@/component/PrevButton";
+import PrevButton from "@/component/Atoms/PrevButton";
 
 interface Props {
   children: React.ReactNode;
