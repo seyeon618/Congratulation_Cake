@@ -9,7 +9,7 @@ import CongratulationPage from "@/component/Page/CongratulationPage";
 function Cake() {
   const router = useRouter();
   const { id } = router.query;
-  // const { data } = getCake(id as string);
+  // const { data } = getCake(Number(id));
 
   // console.log(data);
 

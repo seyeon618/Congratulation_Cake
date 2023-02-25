@@ -10,7 +10,7 @@ interface getCakeResponse {
   link: string;
 }
 
-function getCake(id: string) {
+function getCake(id: number) {
   const { data, error } = useSWR<getCakeResponse, AxiosError>(id ? `${baseUrl}/cake?cake_id=${id}` : null);
 
   return {

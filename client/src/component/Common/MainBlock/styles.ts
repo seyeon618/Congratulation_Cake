@@ -6,7 +6,7 @@ export const MainContainer = styled("div")`
 `;
 
 export const Inner = styled("div")`
-  height: 100vh;
+  height: fit-content;
   width: 100vw;
   max-width: 768px;
 `;

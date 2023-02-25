@@ -6,11 +6,11 @@ interface getMessagesResponse {
   id: number;
   image_url: string;
   message: string;
-  font_type: number;
+  writer: string;
 }
 
 function getMessages(id: number) {
-  const { data, error } = useSWR<getMessagesResponse, AxiosError>(id ? `${baseUrl}/message?cake_id=${id}` : null);
+  const { data, error } = useSWR<getMessagesResponse[], AxiosError>(id ? `${baseUrl}/message?cake_id=${id}` : null);
 
   return {
     data: data,
