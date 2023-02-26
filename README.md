@@ -5,6 +5,8 @@
 # [congratulation.today](https://congratulation.today/) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
 <!--lint disable awesome-badge-->
 <!--lint disable awesome-heading-->
+ > ### introduce
+Happy birthday, how was your celebration so far? Didn't you spend a lot of time just busy replying to countless KakaoTalk messages and Instagram DMs? congratulation.today was created so that you can fully feel and record the precious feelings and excitement of congratulations. 
  > ### event service
  > #### Powered by JaeJikTon 3Team<a href="https://congratulation.today"><img src="https://jaejikton-3team.s3.ap-northeast-2.amazonaws.com/jaejikton-image/Screen+Shot+2023-02-20+at+23.10.49.png" width= 80></a>
 
