@@ -12,26 +12,21 @@ interface Props {
   nextAction?: any;
   setSelectedCake?: any;
   selectedCake?: any;
-  cakeId?: number;
+  cakeId: number;
 }
 
 function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId }: Props) {
   const handleNextAction = () => {
     const url = `${baseUrl}/cake/${cakeId}`;
 
-    // const requestData = {
-    //   cakeId: cakeId,
-    //   cakeDesign: selectedCake,
-    // };
-
     const requestData = {
-      cake_id: 2,
-      cake_design_id: 1,
+      cake_id: cakeId,
+      cake_design_id: selectedCake,
     };
 
     axios.put(url, requestData).then((res) => {
       console.log(res);
-      // nextAction();
+      nextAction();
     });
   };
 
@@ -41,7 +36,7 @@ function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId
         <Label text={"Pick a \n cake design"} />
         <CakeSelector setSelectedCake={setSelectedCake} selectedCake={selectedCake} />
         <ButtonWrap>
-          <Button label="Next" Action={nextAction} disable={selectedCake == 0} />
+          <Button label="Next" Action={handleNextAction} disable={selectedCake == 0} />
         </ButtonWrap>
       </Card>
     </CommonBackground>

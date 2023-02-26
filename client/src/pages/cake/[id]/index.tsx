@@ -9,21 +9,17 @@ import CongratulationPage from "@/component/Page/CongratulationPage";
 function Cake() {
   const router = useRouter();
   const { id } = router.query;
-  // const { data } = getCake(Number(id));
+  const { data, isLoading } = getCake(Number(id));
 
-  // console.log(data);
+  // const data = {
+  //   id: 2,
+  //   receiver: "한승웅",
+  //   date_of_birth: "2023-02-13",
+  //   cake_design_id: 1,
+  //   link: null,
+  // };
 
-  // FIXME : Remove mock data
-
-  const data = {
-    id: 2,
-    receiver: "한승웅",
-    date_of_birth: "2023-02-13",
-    cake_design_id: 1,
-    link: null,
-  };
-
-  const isBeforeBirthday = new Date(data?.date_of_birth) < new Date();
+  const isBeforeBirthday = new Date(data?.date_of_birth as string) > new Date();
 
   return <CommonBackground>{isBeforeBirthday ? <CelebratePage cakeId={data?.id} /> : <CongratulationPage cakeId={data?.id} />}</CommonBackground>;
 }

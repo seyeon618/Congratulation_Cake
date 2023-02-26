@@ -6,6 +6,7 @@ import WaitCake from "@/component/Atoms/PreviewCakes/WaitCake";
 import CompleteCake from "@/component/Atoms/PreviewCakes/EditCompleteCake";
 import axios from "axios";
 import { baseUrl } from "@/constant/api";
+import getCake from "@/apis/get/getCake";
 
 enum EditPageState {
   password = 0,
@@ -18,21 +19,25 @@ function Edit() {
   const router = useRouter();
   const { id } = router.query;
   const cakeId = Number(id);
+  const { data, isLoading } = getCake(cakeId);
 
   const [pageState, setPageState] = useState(EditPageState.password);
-  const [selectedCake, setSelectedCake] = useState(Number(id));
+  const [selectedCake, setSelectedCake] = useState(data?.cake_design_id || 0);
 
   const passwordConfirm = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
 
-      //FIXME: password 추가
-      const url = `${baseUrl}/cake/${cakeId}/admin?password=${"aaaa1111"}`;
+      const url = `${baseUrl}/cake/${cakeId}/admin?password=${e.target.value}`;
 
-      axios.get(url).then((res) => {
-        console.log(res);
-        setPageState(pageState + 1);
-      });
+      axios
+        .get(url)
+        .then((res) => {
+          setPageState(pageState + 1);
+        })
+        .catch((err) => {
+          alert("Password is wrong!");
+        });
     }
   };
 
@@ -59,11 +64,11 @@ function Edit() {
       default:
         return <PasswordForm preAction={goCakePage} nextAction={passwordConfirm} text="Type your Password" showGuideMessage={false} />;
       case EditPageState.waitCake:
-        return <WaitCake preAction={goCakePage} nextAction={goCakeDesign} id={selectedCake} />;
+        return <WaitCake preAction={goCakePage} nextAction={goCakeDesign} id={cakeId} selectedCake={selectedCake} />;
       case EditPageState.cakeDesign:
-        return <CakeForm preAction={onPrevPage} nextAction={goCompleteCake} selectedCake={selectedCake} setSelectedCake={setSelectedCake} />;
+        return <CakeForm preAction={onPrevPage} nextAction={goCompleteCake} selectedCake={selectedCake} setSelectedCake={setSelectedCake} cakeId={cakeId} />;
       case EditPageState.completeCake:
-        return <CompleteCake selectedCake={selectedCake} />;
+        return <CompleteCake selectedCake={selectedCake} cakeId={cakeId} />;
     }
   })();
 

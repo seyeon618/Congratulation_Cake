@@ -6,7 +6,7 @@ import { Container, Inner, ButtonsWrapper } from "./styles";
 import { useRouter } from "next/router";
 
 interface Props {
-  cakeId: number;
+  cakeId?: number;
 }
 
 function CongratulationPage({ cakeId }: Props) {

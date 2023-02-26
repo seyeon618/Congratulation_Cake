@@ -8,7 +8,7 @@ import HomeCake_1 from "@/asset/images/HomeCake_1.png";
 import HomeCake_2 from "@/asset/images/HomeCake_2.png";
 
 interface Props {
-  cakeId: number;
+  cakeId?: number;
 }
 
 function CelebratePage({ cakeId }: Props) {

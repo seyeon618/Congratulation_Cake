@@ -13,16 +13,16 @@ interface Props {
   preAction?: any;
   nextAction?: any;
   id: number;
+  selectedCake: number;
 }
 
 const cakeImages = [Cake1, Cake2, Cake3, Cake4];
 
-function WaitCake({ preAction, nextAction, id }: Props) {
-  console.log(id);
+function WaitCake({ preAction, nextAction, id, selectedCake }: Props) {
   return (
     <CommonBackground onClickAction={preAction}>
       <CakeImageWrap>
-        <Image src={cakeImages[id - 1]} alt={`cake-image-${id}`} width={251} height={251} />
+        <Image src={cakeImages[selectedCake - 1]} alt={`cake-image-${id}`} width={251} height={251} />
       </CakeImageWrap>
       <Card>
         <LabelWrap>

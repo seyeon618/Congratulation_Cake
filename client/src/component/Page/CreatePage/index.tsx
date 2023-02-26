@@ -23,13 +23,13 @@ enum PageState {
 
 function CakePage() {
   const router = useRouter();
-
   const [pageState, setPageState] = useState(PageState.nickname);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
   const [selectedCake, setSelectedCake] = useState(0);
   const [cakeLink, setCakeLink] = useState("");
+  const [cakeId, setCakeId] = useState(0);
 
   const onNextPageToSelection = () => {
     setPageState(pageState + 1);
@@ -76,6 +76,7 @@ function CakePage() {
     // };
 
     axios.post(url, requestData).then((res) => {
+      setCakeId(res.data.id);
       setCakeLink(res.data.link);
     });
   };
@@ -94,7 +95,15 @@ function CakePage() {
       case PageState.password:
         return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text={"Set a \n Password!"} showGuideMessage={true} />;
       case PageState.cake:
-        return <CakeForm preAction={onPrevPage} nextAction={onNextPageToSelection} setSelectedCake={setSelectedCake} selectedCake={selectedCake}></CakeForm>;
+        return (
+          <CakeForm
+            preAction={onPrevPage}
+            nextAction={onNextPageToSelection}
+            setSelectedCake={setSelectedCake}
+            selectedCake={selectedCake}
+            cakeId={cakeId}
+          ></CakeForm>
+        );
       case PageState.success:
         return <CompleteCake selectedCake={selectedCake} cakeLink={cakeLink} />;
     }
