@@ -143,7 +143,7 @@ function CakePage({ id }: Props) {
         </CakeCanvas>
 
         <MessageList>
-          <DownloadText onClick={handleDownloadImage}>DownLoad</DownloadText>
+          {/* <DownloadText onClick={handleDownloadImage}>DownLoad</DownloadText> */}
           <MessageTitle>
             <Image src={RollingPaper} alt="rolling-paper" />
           </MessageTitle>

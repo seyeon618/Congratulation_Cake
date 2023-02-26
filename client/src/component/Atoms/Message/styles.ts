@@ -59,7 +59,7 @@ export const MessageWrapper = styled("div")`
 `;
 
 export const ModalMessage = styled("div")`
-  font-size: 30px;
+  font-size: 15px;
   position: absolute;
   word-break: break-all;
 `;
