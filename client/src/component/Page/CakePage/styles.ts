@@ -3,7 +3,8 @@ import { styled } from "@mui/material/styles";
 export const Background = styled("div")`
   /* 메인 배경 */
   height: 100%;
-  background: #9195ed;
+
+  background: linear-gradient(180deg, #9195ed 10%, #ffffff 98%);
   overflow: hidden;
 `;
 
@@ -35,7 +36,7 @@ export const CakeCanvas = styled("div")`
 
 export const MessageList = styled("div")`
   position: absolute;
-  top: 80%;
+  top: 100%;
 
   width: 768px;
   height: fit-content;
@@ -51,6 +52,12 @@ export const MessageTitle = styled("div")`
 `;
 
 export const DownloadText = styled("div")`
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
+  background-color: #9d559d;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
 `;
+
+export const TitleWrap = styled("div")``;

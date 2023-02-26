@@ -19,9 +19,14 @@ export const Inner = styled("div")`
   padding-bottom: 30px;
 `;
 
-export const ButtonsWrapper = styled("div")`
-  display: flex;
-  flex-direction: column;
+export const ImageWrap = styled("div")`
+  position: absolute;
+  top: 15%;
+`;
 
-  gap: 15px;
+export const MakeButtonWrap = styled("div")`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: auto;
 `;

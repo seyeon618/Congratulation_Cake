@@ -19,4 +19,6 @@ export const ButtonWrapper = styled("div")`
   padding: 0;
   margin: 35px 0 0 20px;
   min-width: 30px;
+  position: relative;
+  left: 5%;
 `;

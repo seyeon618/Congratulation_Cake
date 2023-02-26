@@ -21,7 +21,7 @@ function Cake() {
 
   const isBeforeBirthday = new Date(data?.date_of_birth as string) > new Date();
 
-  return <CommonBackground>{isBeforeBirthday ? <CelebratePage cakeId={data?.id} /> : <CongratulationPage cakeId={data?.id} />}</CommonBackground>;
+  return <CommonBackground>{isBeforeBirthday ? <CelebratePage cakeId={data?.id} /> : <CongratulationPage cakeId={Number(id)} />}</CommonBackground>;
 }
 
 export default Cake;

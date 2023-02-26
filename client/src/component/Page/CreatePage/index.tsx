@@ -68,12 +68,6 @@ function CakePage() {
       date_of_birth: birthday,
       cake_design_id: selectedCake,
     };
-    // const requestData = {
-    //   receiver: "name",
-    //   password: "password",
-    //   date_of_birth: "2023-02-02",
-    //   cake_design_id: 1,
-    // };
 
     axios.post(url, requestData).then((res) => {
       setCakeId(res.data.id);

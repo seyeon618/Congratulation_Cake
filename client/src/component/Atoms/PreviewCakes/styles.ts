@@ -7,6 +7,10 @@ export const ImageWrap = styled("div")`
 
 export const CakeImageWrap = styled("div")`
   width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0%;
 `;
 
 export const ButtonWrap = styled("div")`
@@ -14,6 +18,7 @@ export const ButtonWrap = styled("div")`
   display: flex;
   justify-content: center;
   margin-top: 10%;
+  width: auto;
 `;
 
 export const MakeButtonWrap = styled("div")`

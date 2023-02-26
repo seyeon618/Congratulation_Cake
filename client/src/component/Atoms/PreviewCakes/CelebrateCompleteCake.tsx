@@ -5,7 +5,6 @@ import Card from "@/component/Atoms/Card";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Link, MakeButtonWrap, ImageWrap, HintMessage, StyledLabel, Question } from "./styles";
-import QuestionImg from "@/asset/images/Question.png";
 import Cake1 from "@/asset/images/Cake_1.png";
 import Cake2 from "@/asset/images/Cake_2.png";
 import Cake3 from "@/asset/images/Cake_3.png";

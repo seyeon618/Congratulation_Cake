@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Image from "next/image";
-import { CakeCanvas, Background, DownloadText, Container, ImageWrapper, Title, MessageTitle, MessageList } from "./styles";
+import { CakeCanvas, Background, DownloadText, Container, ImageWrapper, TitleWrap, MessageTitle, MessageList } from "./styles";
 import getMessages from "../../../apis/get/getMessages";
 import getCake from "@/apis/get/getCake";
 
@@ -8,7 +8,9 @@ import Cake1 from "@/asset/images/Cake_1.png";
 import Cake2 from "@/asset/images/Cake_2.png";
 import Cake3 from "@/asset/images/Cake_3.png";
 import Cake4 from "@/asset/images/Cake_4.png";
-import downloadImageBackground from "@/asset/images/download_image_background.png";
+import StarGroup from "@/asset/images/StarGroup.png";
+import CongratulationText from "@/asset/images/congratulation_text.png";
+import RollingPaper from "@/asset/images/RollingPaper.png";
 import Candlelight from "@/component/Atoms/Candlelight";
 import Message from "@/component/Atoms/Message";
 
@@ -125,7 +127,9 @@ function CakePage({ id }: Props) {
   return (
     <Background>
       <Container>
-        <Title>Congratulation</Title>
+        <TitleWrap>
+          <Image src={CongratulationText} width={319} height={54} alt="celebrate_text" />
+        </TitleWrap>
         <CakeCanvas ref={cakeRef}>
           <ImageWrapper>
             <Image src={cakeImages[0]} alt={`cake`} />
@@ -140,7 +144,9 @@ function CakePage({ id }: Props) {
 
         <MessageList>
           <DownloadText onClick={handleDownloadImage}>DownLoad</DownloadText>
-          <MessageTitle>ROLLING PAPER FOR YOU</MessageTitle>
+          <MessageTitle>
+            <Image src={RollingPaper} alt="rolling-paper" />
+          </MessageTitle>
           {messageData &&
             messageData.map((message, index) => (
               <div key={`cake-${id}-message-${message?.id}`}>

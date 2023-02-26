@@ -1,13 +1,20 @@
-import Image from "next/image";
-import congratulationText from "@/asset/images/congratulation_text.png";
+import CongratulationText from "@/asset/images/congratulation_text.png";
 import Card from "@/component/Atoms/Card";
 import Button from "@/component/Atoms/Button";
-import { Container, Inner, ButtonsWrapper } from "./styles";
+import { MakeButtonWrap, Container, ImageWrap } from "./styles";
 import { useRouter } from "next/router";
 
+import Image from "next/image";
+import Cake1 from "@/asset/images/Cake_1.png";
+import Cake2 from "@/asset/images/Cake_2.png";
+import Cake3 from "@/asset/images/Cake_3.png";
+import Cake4 from "@/asset/images/Cake_4.png";
+
 interface Props {
-  cakeId?: number;
+  cakeId: number;
 }
+
+const cakeImages = [Cake1, Cake2, Cake3, Cake4];
 
 function CongratulationPage({ cakeId }: Props) {
   const router = useRouter();
@@ -18,13 +25,14 @@ function CongratulationPage({ cakeId }: Props) {
 
   return (
     <Container>
-      <Image src={congratulationText} width={319} height={54} alt="celebrate_text" />
-      <Card>
-        <Inner>
-          <div>케이크 이미지</div>
-        </Inner>
-      </Card>
-      <Button label="촛불 끄기" Action={goCongratulationPage} />
+      <Image src={CongratulationText} width={319} height={54} alt="celebrate_text" />
+      <ImageWrap>
+        <Image src={cakeImages[cakeId - 1]} alt={`cake-image-${cakeId}`} width={355} height={355} />
+      </ImageWrap>
+      <Card></Card>
+      <MakeButtonWrap>
+        <Button label="Open Cake" Action={goCongratulationPage} />
+      </MakeButtonWrap>
     </Container>
   );
 }
