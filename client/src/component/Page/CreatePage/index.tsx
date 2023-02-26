@@ -68,6 +68,12 @@ function CakePage() {
       date_of_birth: birthday,
       cake_design_id: selectedCake,
     };
+    // const requestData = {
+    //   receiver: "name",
+    //   password: "password",
+    //   date_of_birth: "2023-02-02",
+    //   cake_design_id: 1,
+    // };
 
     axios.post(url, requestData).then((res) => {
       setCakeId(res.data.id);
@@ -87,7 +93,7 @@ function CakePage() {
           </DateForm>
         );
       case PageState.password:
-        return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text={"Set a \n Password!"} showGuideMessage={true} />;
+        return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text={"Set a \n Password!"} password={password} showGuideMessage={true} />;
       case PageState.cake:
         return (
           <CakeForm

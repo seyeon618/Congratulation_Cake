@@ -7,17 +7,19 @@ interface Props {
   preAction?: any;
   nextAction?: any;
   text?: string;
-  showGuideMessage: boolean;
+  password: string;
+  setPassword?: any;
+  showGuideMessage?: boolean;
 }
 
-function PasswordForm({ preAction, nextAction, text, showGuideMessage }: Props) {
+function PasswordForm({ preAction, nextAction, text, password, setPassword }: Props) {
   return (
     <CommonBackground onClickAction={preAction}>
       <Card>
         {/* <PasswordBox isError={true} />
         <PasswordBox isError={false} /> */}
         <Label>{text}</Label>
-        <InputPw onKeyPress={nextAction}></InputPw>
+        <InputPw onKeyPress={nextAction} password={password} setPassword={setPassword}></InputPw>
       </Card>
     </CommonBackground>
   );

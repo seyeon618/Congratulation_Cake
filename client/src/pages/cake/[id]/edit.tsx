@@ -20,6 +20,7 @@ function Edit() {
   const { id } = router.query;
   const cakeId = Number(id);
   const { data, isLoading } = getCake(cakeId);
+  const [password, setPassword] = useState("");
 
   const [pageState, setPageState] = useState(EditPageState.password);
   const [selectedCake, setSelectedCake] = useState(data?.cake_design_id || 0);
@@ -27,6 +28,7 @@ function Edit() {
   const passwordConfirm = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      console.log(password);
 
       const url = `${baseUrl}/cake/${cakeId}/admin?password=${e.target.value}`;
 
@@ -36,7 +38,7 @@ function Edit() {
           setPageState(pageState + 1);
         })
         .catch((err) => {
-          alert("Password is wrong!");
+          setPassword("");
         });
     }
   };
@@ -62,7 +64,16 @@ function Edit() {
     switch (pageState) {
       case EditPageState.password:
       default:
-        return <PasswordForm preAction={goCakePage} nextAction={passwordConfirm} text="Type your Password" showGuideMessage={false} />;
+        return (
+          <PasswordForm
+            preAction={goCakePage}
+            nextAction={passwordConfirm}
+            text="Type your Password"
+            showGuideMessage={false}
+            password={password}
+            setPassword={setPassword}
+          />
+        );
       case EditPageState.waitCake:
         return <WaitCake preAction={goCakePage} nextAction={goCakeDesign} id={cakeId} selectedCake={selectedCake} />;
       case EditPageState.cakeDesign:

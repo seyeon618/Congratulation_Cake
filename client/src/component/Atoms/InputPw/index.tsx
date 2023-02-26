@@ -2,16 +2,17 @@ import { Bang, Box, BoxWrap, TextWrap, StyledInput, InputWrap, Label } from "./s
 import Image from "next/image";
 import BangImg from "@/asset/images/Bang.png";
 import { useLayoutEffect, useRef, useState } from "react";
+import { isFunctionLike } from "typescript";
 
 interface Props {
   onKeyPress: (e: any) => void;
   showGuideMessage?: boolean;
+  password: string;
+  setPassword?: any;
 }
 
-function InputPw({ onKeyPress, showGuideMessage }: Props) {
+function InputPw({ onKeyPress, showGuideMessage, password, setPassword }: Props) {
   const input = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState("");
-
   useLayoutEffect(() => {
     if (input.current !== null) input.current.focus();
   }, []);
@@ -20,16 +21,16 @@ function InputPw({ onKeyPress, showGuideMessage }: Props) {
     <div>
       <BoxWrap>
         <Box>
-          <TextWrap isVisible={value.length >= 1}>*</TextWrap>
+          <TextWrap isVisible={password.length >= 1}>*</TextWrap>
         </Box>
         <Box>
-          <TextWrap isVisible={value.length >= 2}>*</TextWrap>
+          <TextWrap isVisible={password.length >= 2}>*</TextWrap>
         </Box>
         <Box>
-          <TextWrap isVisible={value.length >= 3}>*</TextWrap>
+          <TextWrap isVisible={password.length >= 3}>*</TextWrap>
         </Box>
         <Box>
-          <TextWrap isVisible={value.length >= 4}>*</TextWrap>
+          <TextWrap isVisible={password.length >= 4}>*</TextWrap>
         </Box>
       </BoxWrap>
       <Bang isShow={showGuideMessage ? true : false}>
@@ -42,10 +43,11 @@ function InputPw({ onKeyPress, showGuideMessage }: Props) {
             type="number"
             ref={input}
             onChange={(e) => {
-              setValue(e.target.value);
+              setPassword(e.target.value);
             }}
             onKeyPress={onKeyPress}
             autoFocus
+            value={password}
           />
         </form>
       </InputWrap>
