@@ -73,7 +73,6 @@ function ImageForm({ preAction, nextAction }: Props) {
             Action={() => {
               if (inputRef.current) {
                 inputRef.current.click();
-                console.log("upload image");
               }
             }}
           />

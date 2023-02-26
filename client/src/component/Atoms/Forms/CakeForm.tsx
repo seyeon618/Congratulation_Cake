@@ -6,6 +6,7 @@ import Label from "@/component/Atoms/Label";
 import { ButtonWrap } from "./styles";
 import axios from "axios";
 import { baseUrl } from "@/constant/api";
+import { useRouter } from "next/router";
 
 interface Props {
   preAction?: any;
@@ -13,11 +14,15 @@ interface Props {
   setSelectedCake?: any;
   selectedCake?: any;
   cakeId: number;
+  isCreate?: boolean;
 }
 
-function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId }: Props) {
+function CakeForm({ preAction, nextAction, setSelectedCake, isCreate, selectedCake, cakeId }: Props) {
+  const router = useRouter();
+  const { id } = router.query;
+
   const handleNextAction = () => {
-    const url = `${baseUrl}/cake/${cakeId}`;
+    const url = `${baseUrl}/cake/${cakeId === 0 ? id : cakeId}`;
 
     const requestData = {
       cake_id: cakeId,
@@ -25,7 +30,6 @@ function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId
     };
 
     axios.put(url, requestData).then((res) => {
-      console.log(res);
       nextAction();
     });
   };
@@ -36,7 +40,7 @@ function CakeForm({ preAction, nextAction, setSelectedCake, selectedCake, cakeId
         <Label text={"Pick a \n cake design"} />
         <CakeSelector setSelectedCake={setSelectedCake} selectedCake={selectedCake} />
         <ButtonWrap>
-          <Button label="Next" Action={handleNextAction} disable={selectedCake == 0} />
+          <Button label="Next" Action={!isCreate ? handleNextAction : nextAction} disable={selectedCake === 0} />
         </ButtonWrap>
       </Card>
     </CommonBackground>

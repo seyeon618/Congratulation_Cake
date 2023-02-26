@@ -54,7 +54,7 @@ function Celebrate() {
     };
 
     axios.post(url, requestData).then((res) => {
-      console.log(res);
+      // console.log(res);
     });
   };
 

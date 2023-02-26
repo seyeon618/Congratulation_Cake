@@ -96,6 +96,7 @@ function CakePage() {
             setSelectedCake={setSelectedCake}
             selectedCake={selectedCake}
             cakeId={cakeId}
+            isCreate={true}
           ></CakeForm>
         );
       case PageState.success:
