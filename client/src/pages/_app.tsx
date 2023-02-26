@@ -22,9 +22,11 @@ export default function App({ Component, emotionCache = clientSideEmotionCache, 
       <SWRConfig
         value={{
           fetcher: (url) => axios.get(url).then((res) => res.data),
-          // onError: () => {
-          //   router.replace("/");
-          // },
+          onError: (error) => {
+            if (error.response.status === 404) {
+              router.replace("/");
+            }
+          },
         }}
       >
         <Head>
