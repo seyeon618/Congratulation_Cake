@@ -24,7 +24,7 @@ function Celebrate() {
 
   const [pageState, setPageState] = useState(CelebratePageState.addWriter);
   const [writer, setWriter] = useState("");
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<any>(null);
   const [message, setMessage] = useState("");
 
   const goCakePage = () => {
@@ -32,11 +32,20 @@ function Celebrate() {
   };
 
   const goNextPageEnter = (e: any) => {
-    if (e.key === "Enter") setPageState(pageState + 1);
+    if (e.key === "Enter") {
+      if (pageState === CelebratePageState.addWriter) {
+        setWriter(e.target.value);
+      }
+      setPageState(pageState + 1);
+    }
   };
 
   const goNextPage = () => {
-    setPageState(pageState + 1);
+    if (pageState === CelebratePageState.uploadMessage) {
+      postCreateMessage();
+    } else {
+      setPageState(pageState + 1);
+    }
   };
 
   const redirectCelebrate = () => {
@@ -46,15 +55,14 @@ function Celebrate() {
   const postCreateMessage = () => {
     const url = `${baseUrl}/message`;
 
-    const requestData = {
-      writer: "name",
-      cake_id: cakeId,
-      message: "집에 가고싶어....ㅠㅠ",
-      image_file: "",
-    };
+    const formData = new FormData();
+    formData.append("writer", writer);
+    formData.append("cake_id", cakeId as any);
+    formData.append("message", message);
+    formData.append("image_file", imageFile);
 
-    axios.post(url, requestData).then((res) => {
-      // console.log(res);
+    axios.post(url, formData).then((res) => {
+      setPageState(pageState + 1);
     });
   };
 
@@ -64,9 +72,9 @@ function Celebrate() {
       default:
         return <NameForm preBtnAction={redirectCelebrate} nextAction={goNextPageEnter} text="From." guideText="너의 이름이나 닉네임을 적어줘" />;
       case CelebratePageState.uploadImage:
-        return <ImageForm preAction={goCakePage} nextAction={goNextPage} />;
+        return <ImageForm preAction={goCakePage} nextAction={goNextPage} setState={setImageFile} />;
       case CelebratePageState.uploadMessage:
-        return <MessageForm preAction={goCakePage} nextAction={goNextPage} />;
+        return <MessageForm preAction={goCakePage} nextAction={goNextPage} setState={setMessage} />;
       case CelebratePageState.complete:
         return <CelebreateCompleteCake cakeId={cakeId} />;
     }

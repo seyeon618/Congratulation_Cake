@@ -14,9 +14,10 @@ import QuestionImg from "@/asset/images/Question.png";
 interface Props {
   preAction?: any;
   nextAction?: any;
+  setState: any;
 }
 
-function ImageForm({ preAction, nextAction }: Props) {
+function ImageForm({ preAction, nextAction, setState }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [selectedImage, setSelectedImage] = useState<any>();
 
@@ -39,11 +40,12 @@ function ImageForm({ preAction, nextAction }: Props) {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        responseType: "blob",
       })
       .then((res) => {
-        const blobURL = URL.createObjectURL(res.data);
-        setSelectedImage(blobURL);
+        console.log("res: ", res);
+        // const blobURL = URL.createObjectURL(res.data);
+        // setSelectedImage(blobURL);
+        setState(res.data);
       })
       .catch((err) => {
         console.error("err: ", err);
