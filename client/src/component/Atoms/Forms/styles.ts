@@ -29,6 +29,11 @@ export const UploadButtonWrap = styled("div")`
   margin: auto;
   margin-bottom: 10%;
   margin-top: 20%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Complete = styled("div")`
@@ -100,7 +105,7 @@ export const StyledInput = styled("input")`
 
 export const StyledLabel = styled("div")`
   position: absolute;
-  margin-top: 15%;
+  margin-top: 40px;
   font-size: 0.5rem;
   color: #8511ee;
 `;

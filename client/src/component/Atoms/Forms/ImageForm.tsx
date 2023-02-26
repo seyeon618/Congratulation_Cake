@@ -11,6 +11,8 @@ import Image from "next/image";
 import UploadImg from "@/asset/images/UploadImage.png";
 import QuestionImg from "@/asset/images/Question.png";
 
+import previewImage from "@/asset/images/upload_preview.png";
+
 interface Props {
   preAction?: any;
   nextAction?: any;
@@ -44,18 +46,20 @@ function ImageForm({ preAction, nextAction, setState }: Props) {
       .then((res) => {
         console.log("res: ", res);
         // const blobURL = URL.createObjectURL(res.data);
-        // setSelectedImage(blobURL);
+        setSelectedImage(previewImage);
         setState(res.data);
       })
       .catch((err) => {
         console.error("err: ", err);
       });
   };
-  // res 성공 Action
-  // nextAction();
 
   const UploadImage = (() => {
-    return selectedImage == null ? <Image src={UploadImg} alt={"upload-image"} width={196} height={196} /> : <img src={selectedImage} alt={"image"} />;
+    return selectedImage == null ? (
+      <Image src={UploadImg} alt={"upload-image"} width={196} height={196} />
+    ) : (
+      <Image src={selectedImage} alt={"image"} width={170} height={250} />
+    );
   })();
 
   return (
