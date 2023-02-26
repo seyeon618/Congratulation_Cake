@@ -45,8 +45,8 @@ export const ModalContainer = styled("div")`
 `;
 
 export const MessageWrapper = styled("div")`
-  width: 450px;
-  height: 300px;
+  width: 200px;
+  height: 150px;
 
   position: absolute;
   top: 50%;
@@ -61,5 +61,5 @@ export const MessageWrapper = styled("div")`
 export const ModalMessage = styled("div")`
   font-size: 15px;
   position: absolute;
-  word-break: break-all;
+  /* word-break: break-all; */
 `;
