@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Circle, MessageBox, MessageWrapper, MessageContainer, ModalContainer, ModalMessage } from "./styles";
 import { Modal } from "@mui/material";
-import MessageBackground from "@/asset/images/message_background.png";
+import MessageBackground from "@/asset/images/message_background_small.png";
 
 interface Props {
   messageData: { id: number; image_url: string; message: string; writer: string };
