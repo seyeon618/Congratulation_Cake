@@ -4,7 +4,7 @@ import Card from "@/component/Atoms/Card";
 
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Link, MakeButtonWrap, ImageWrap, HintMessage, StyledLabel, Question } from "./styles";
+import { Link, MakeButtonWrap, CongraturationCompleteCake, HintMessage, StyledLabel, Question } from "./styles";
 import Cake1 from "@/asset/images/Cake_1.png";
 import Cake2 from "@/asset/images/Cake_2.png";
 import Cake3 from "@/asset/images/Cake_3.png";
@@ -33,7 +33,9 @@ function CelebrateCompleteCake({ preAction, cakeId }: Props) {
 
   return (
     <CommonBackground onClickAction={preAction}>
-      <ImageWrap>{data && <Image src={cakeImages[data.cake_design_id - 1]} alt={`cake-image-${cakeId}`} width={192} height={192} />}</ImageWrap>
+      <CongraturationCompleteCake>
+        {data && <Image src={cakeImages[data.cake_design_id - 1]} alt={`cake-image-${cakeId}`} width={192} height={192} />}
+      </CongraturationCompleteCake>
       <MakeButtonWrap>
         <Button label="Make new cake!" Action={goMainPage} />
       </MakeButtonWrap>

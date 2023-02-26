@@ -2,9 +2,9 @@ import { styled } from "@mui/material/styles";
 
 export const Background = styled("div")`
   /* 메인 배경 */
-  height: 100%;
+  height: 1700px;
 
-  background: linear-gradient(180deg, #9195ed 10%, #ffffff 98%);
+  background: #9195ed;
   overflow: hidden;
 `;
 

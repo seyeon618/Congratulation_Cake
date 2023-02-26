@@ -5,6 +5,11 @@ export const ImageWrap = styled("div")`
   top: 30%;
 `;
 
+export const CongraturationCompleteCake = styled("div")`
+  position: absolute;
+  top: 20%;
+`;
+
 export const CakeImageWrap = styled("div")`
   width: 100%;
   position: absolute;
@@ -76,4 +81,5 @@ export const HintMessage = styled("div")`
   font-family: var(--scdream3-font);
   margin-top: 5%;
   font-weight: bolder;
+  color: white;
 `;
