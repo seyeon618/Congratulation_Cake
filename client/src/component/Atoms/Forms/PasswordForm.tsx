@@ -8,7 +8,7 @@ interface Props {
   nextAction?: any;
   text?: string;
   password: string;
-  setPassword?: any;
+  setPassword: any;
   showGuideMessage?: boolean;
 }
 

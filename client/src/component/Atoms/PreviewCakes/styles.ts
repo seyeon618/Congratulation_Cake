@@ -25,7 +25,7 @@ export const MakeButtonWrap = styled("div")`
   position: relative;
   display: flex;
   justify-content: center;
-  left: 30%;
+  left: 25%;
   margin-bottom: 5%;
   width: auto;
 `;

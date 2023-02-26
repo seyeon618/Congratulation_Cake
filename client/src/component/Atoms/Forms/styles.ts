@@ -56,6 +56,7 @@ export const Complete = styled("div")`
 
 export const ImageWrap = styled("div")`
   position: absolute;
+  top: 13%;
 `;
 
 export const UploadImageWrap = styled("div")`

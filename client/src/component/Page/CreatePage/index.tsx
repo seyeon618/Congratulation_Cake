@@ -54,6 +54,7 @@ function CakePage() {
   const onPrevPage = (e: any) => {
     e.preventDefault();
     setPageState(pageState - 1);
+    setPassword("");
   };
 
   const redirectHome = () => {
@@ -75,10 +76,15 @@ function CakePage() {
     //   cake_design_id: 1,
     // };
 
-    axios.post(url, requestData).then((res) => {
-      setCakeId(res.data.id);
-      setCakeLink(res.data.link);
-    });
+    axios
+      .post(url, requestData)
+      .then((res) => {
+        setCakeId(res.data.id);
+        setCakeLink(res.data.link);
+      })
+      .catch((err) => {
+        setPassword("");
+      });
   };
 
   const forms = (() => {
@@ -93,7 +99,16 @@ function CakePage() {
           </DateForm>
         );
       case PageState.password:
-        return <PasswordForm preAction={onPrevPage} nextAction={onNextPage} text={"Set a \n Password!"} password={password} showGuideMessage={true} />;
+        return (
+          <PasswordForm
+            preAction={onPrevPage}
+            nextAction={onNextPage}
+            text={"Set a \n Password!"}
+            password={password}
+            setPassword={setPassword}
+            showGuideMessage={true}
+          />
+        );
       case PageState.cake:
         return (
           <CakeForm
